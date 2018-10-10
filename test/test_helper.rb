@@ -12,6 +12,7 @@ require 'minitest/autorun'
 require 'minitest/pride'
 
 db = ENV['DB'] || 'sqlite'
+db_user = ENV['DB_USER']
 case db
 when 'pg'
   ActiveRecord::Base.establish_connection(
@@ -25,7 +26,8 @@ when 'mysql'
   ActiveRecord::Base.establish_connection(
     adapter:  'mysql2',
     database: 'active_reporting_test',
-    encoding: 'utf8'
+    encoding: 'utf8',
+    username: db_user
   )
 when 'sqlite'
   ActiveRecord::Base.establish_connection(

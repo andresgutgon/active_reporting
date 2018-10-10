@@ -219,7 +219,7 @@ class PhoneFactModel < ActiveReporting::FactModel
 end
 ```
 
-### Implicit hierarchies with datetime columns (PostgreSQL support only)
+### Implicit hierarchies with datetime columns (PostgreSQL and MySQL* support only)
 
 The fastest approach to group by certain date metrics is to create so-called "date dimensions". For
 those Postgres users that are restricted from organizing their data in this way, Postgres provides
@@ -235,7 +235,12 @@ end
 
 When creating a metric, ActiveReporting will recognize implicit hierarchies for this dimension. The hierarchies correspond to the [values](https://www.postgresql.org/docs/8.1/static/functions-datetime.html#FUNCTIONS-DATETIME-TRUNC) supported by PostgreSQL. (See example under the metric section, below.)
 
-*NOTE*: PRs welcomed to support this functionality in other databases.
+*Before Using with MySQL
+You can add `date_trunc` function to a rails app. We have a migration generator that will generate a SQL
+statement to create it on your database. To do it run this command:
+```
+bin/rails generate active_reporting:mysql_function_migration
+```
 
 ## Configuring Dimension Filters
 

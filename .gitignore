@@ -6,5 +6,7 @@
 /doc/
 /pkg/
 /spec/reports/
+.ruby-version
+.byebug_history
 /tmp/
 .DS_STORE

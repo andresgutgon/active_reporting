@@ -4,7 +4,7 @@ require 'forwardable'
 module ActiveReporting
   class ReportingDimension
     extend Forwardable
-    SUPPORTED_DBS = %w[PostgreSQL PostGIS].freeze
+    SUPPORTED_DBS = %w[PostgreSQL PostGIS Mysql2].freeze
     # Values for the Postgres `date_trunc` method.
     # See https://www.postgresql.org/docs/10/static/functions-datetime.html#FUNCTIONS-DATETIME-TRUNC
     DATETIME_HIERARCHIES = %i[microseconds milliseconds second minute hour day week month quarter year decade
