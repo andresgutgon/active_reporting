@@ -32,8 +32,10 @@ class ActiveReporting::ReportTest < Minitest::Test
     assert data.all? { |r| r.key?('a_metric') }
   end
 
+  # NOTE: In order to make this test pass with `mysql` you need to add
+  # `date_trunc` function to your local mysql database
   def test_report_runs_with_a_date_grouping
-    if ENV['DB'] == 'pg'
+    if ENV['DB'] == 'pg' || ENV['DB'] == 'mysql'
       metric = ActiveReporting::Metric.new(:a_metric, fact_model: UserFactModel, dimensions: [{created_at: :month}])
       report = ActiveReporting::Report.new(metric)
       data = report.run
